@@ -2,11 +2,12 @@ import random
 
 def get_numbers_ticket(min: int, max: int, quantity: int):
     #cases of returning the empty set
-    if not(1 <= min <= max <= 1000) or not(min <= quantity <= max):
+    if min < 1 or max > 1000 or min > max or quantity > (max - min + 1):
         return []
-    #random.sample() automatically  takes unique random numbers
-    #range(min, max + 1) because range(start, stop) includes start but doesnt include stop which is max
-    return sorted(random.sample(range(min, max + 1), quantity))
 
+    numbers = random.sample(range(min, max + 1), quantity)
+    return sorted(numbers)
+
+# Приклад використання
 lottery_numbers = get_numbers_ticket(1, 49, 6)
-print("Ваші лотерейні числа: ", lottery_numbers)
+print("Ваші лотерейні числа:", lottery_numbers)
